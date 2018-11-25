@@ -2,6 +2,8 @@ package com.andreas.dummyProjektboerse.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.andreas.dummyProjektboerse.Repository.PostRepository;
@@ -31,14 +33,19 @@ public class MainController {
         return "Saved";
     }
 
+
     @PostMapping(path="/posts/jsonadd") // Map ONLY GET Requests
-    public Posts addJsonPost (@RequestBody Map<String,String> body) {
+    public ResponseEntity<Posts> addJsonPost (@RequestBody Map<String,String> body) {
 
         Posts n = new Posts();
         n.setTitle(body.get("title"));
         n.setContent(body.get("content"));
         n.setStatus(body.get("status"));
-        return postRepository.save(n);
+
+        if(n.getContent()==null || n.getStatus()==null|| n.getTitle()==null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        else
+            return new ResponseEntity<>(postRepository.save(n),HttpStatus.OK);
     }
 
     @GetMapping(path="/posts/delete") // Map ONLY GET Requests
