@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projektbörse MySQL Dummy Service</title>
+</head>
+<body>
+    <h3>Usage:</h3>
+    <p>List posts: <a href="http://localhost:8045/posts">http://localhost:8045/posts</a></p>
+    <p>Add post: <a href="http://localhost:8045/posts/add?title=&lt;title&gt;&amp;content=&lt;content&gt;&amp;status=publish">http://localhost:8045/posts/add?title=&lt;title&gt;&amp;content=&lt;content&gt;&amp;status=publish</a></p>
+    <p>Delete post: <a href="http://localhost:8045/posts/delete?id=&lt;id&gt;">http://localhost:8045/posts/delete?id=&lt;id&gt;</a></p>
+    <p>&nbsp;</p>
+    <p>Add Post via JSON-REST-Request: <a href="http://localhost:8045/posts/jsonadd">http://localhost:8045/posts/jsonadd</a></p>
+    <p>Expected JSON Format:</p>
+    <blockquote>
+        <p><span style="color: #ff0000;">{</span><br /><span style="color: #ff0000;">&nbsp;&nbsp; "title": "&lt;title&gt;",</span><br /><span style="color: #ff0000;">&nbsp;&nbsp; "content": "&lt;content&gt;",</span><br /><span style="color: #ff0000;">&nbsp;&nbsp; "status": "publish"</span><br /><span style="color: #ff0000;">}</span></p>
+    </blockquote>
+</body>
+</html>
