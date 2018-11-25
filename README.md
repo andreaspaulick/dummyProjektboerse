@@ -1,7 +1,7 @@
 # Dummy Projektboerse
 Simulates the API of a simple post-orientated CMS without any security- or authentication features. For local testing only.
 
-Requierements: Java 8, Apache Web Server, MySQL/MariaDB
+Requirements: Java 8, Apache Web Server, MySQL/MariaDB
 
 Supports the following HTTP-methods: PUT, POST and DELETE
 
