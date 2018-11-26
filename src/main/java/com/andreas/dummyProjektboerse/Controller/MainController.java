@@ -18,7 +18,7 @@ public class MainController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping(path="/posts/add") // Map ONLY GET Requests
+    @GetMapping(path="/posts/add")
     public @ResponseBody
     String addPost (@RequestParam String title
             , @RequestParam String content, @RequestParam String status) {
@@ -34,8 +34,8 @@ public class MainController {
     }
 
 
-    @PostMapping(path="/posts/jsonadd") // Map ONLY GET Requests
-    public ResponseEntity<Posts> addJsonPost (@RequestBody Map<String,String> body) {
+    @PostMapping(path="/posts/jsonadd")
+    public ResponseEntity addJsonPost (@RequestBody Map<String,String> body) {
 
         Posts n = new Posts();
         n.setTitle(body.get("title"));
@@ -43,12 +43,12 @@ public class MainController {
         n.setStatus(body.get("status"));
 
         if(n.getContent()==null || n.getStatus()==null|| n.getTitle()==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error: Missing or invalid JSON Key(s).", null, HttpStatus.BAD_REQUEST);
         else
             return new ResponseEntity<>(postRepository.save(n),HttpStatus.OK);
     }
 
-    @GetMapping(path="/posts/delete") // Map ONLY GET Requests
+    @GetMapping(path="/posts/delete")
     public @ResponseBody
     String deletePost (@RequestParam int id) {
 
