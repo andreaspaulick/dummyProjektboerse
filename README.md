@@ -6,9 +6,15 @@ Requirements: Java 8, Apache Web Server, MySQL/MariaDB
 Supports the following HTTP-methods: PUT, POST and DELETE
 
 ## API Documentation:
-#### List Posts (GET):
+#### List all posts (GET):
 
 `http://localhost:8045/posts`
+
+---
+
+#### List a single post (GET):
+
+`http://localhost:8045/posts/<id>`
 
 ---
 

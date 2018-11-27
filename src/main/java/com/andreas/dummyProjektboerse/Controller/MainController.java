@@ -1,6 +1,9 @@
 package com.andreas.dummyProjektboerse.Controller;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.data.rest.webmvc.support.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +12,7 @@ import com.andreas.dummyProjektboerse.Repository.PostRepository;
 import com.andreas.dummyProjektboerse.Entity.Posts;
 
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -56,13 +60,22 @@ public class MainController {
             return "Post " + id + " deleted";
         }
         else
-            return "ERROR: ID " + id + " not found in database";
+            throw new ResourceNotFoundException();
     }
 
     @GetMapping(path="/posts")
     public @ResponseBody Iterable<Posts> getAllPosts() {
-        // This returns a JSON or XML with the users
+        // This returns a JSON or XML with the posts
         return postRepository.findAll();
+    }
+
+    @GetMapping(path="/posts/{id}")
+       public @ResponseBody Optional getByID(@PathVariable int id) {
+        // This returns a JSON or XML with the posts
+        if(postRepository.existsById(id))
+            return postRepository.findById(id);
+        else
+            throw new ResourceNotFoundException();
     }
 
 }
