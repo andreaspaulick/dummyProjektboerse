@@ -71,7 +71,6 @@ public class MainController {
 
     @GetMapping(path="/posts/{id}")
        public @ResponseBody Optional getByID(@PathVariable int id) {
-        // This returns a JSON or XML with the posts
         if(postRepository.existsById(id))
             return postRepository.findById(id);
         else
