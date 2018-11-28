@@ -31,7 +31,7 @@ public class MainController {
         n.setContent(content);
         n.setStatus(status);
         postRepository.save(n);
-        return "Saved";
+        return "Saved <a href=\"http://localhost:8045/posts\"><br><br>Back to Posts</p>";
     }
 
 
@@ -55,10 +55,17 @@ public class MainController {
 
         if(postRepository.existsById(id)) {
             postRepository.deleteById(id);
-            return "Post " + id + " deleted";
+            return "Post " + id + " deleted <a href=\"http://localhost:8045/posts\"><br><br>Back to Posts</p>";
         }
         else
             throw new ResourceNotFoundException();
+    }
+
+    @GetMapping(path="/posts/deleteall")
+    public String deleteAllPosts() {
+        // Clears the database
+        postRepository.deleteAll();
+        return "Database erased <a href=\"http://localhost:8045/posts\"><br><br>Back to Posts</p>";
     }
 
     @GetMapping(path="/posts")
