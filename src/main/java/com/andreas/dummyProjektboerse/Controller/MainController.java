@@ -61,11 +61,11 @@ public class MainController {
             throw new ResourceNotFoundException();
     }
 
-    @GetMapping(path="/posts/deleteall")
+    @RequestMapping(path="/posts/deleteall", method = RequestMethod.DELETE)
     public String deleteAllPosts() {
         // Clears the database
         postRepository.deleteAll();
-        return "Database erased <a href=\"http://localhost:8045/posts\"><br><br>Back to Posts</p>";
+        return "Database erased";
     }
 
     @GetMapping(path="/posts")

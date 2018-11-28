@@ -3,7 +3,7 @@ Simulates the API of a simple post-orientated CMS without any security- or authe
 
 Requirements: Java 8, Apache Web Server, MySQL/MariaDB
 
-Supports the following HTTP-methods: PUT, POST and DELETE
+Supports the following HTTP-methods: GET, POST, DELETE
 
 ## API Documentation:
 #### List all posts (GET):
@@ -30,9 +30,15 @@ Supports the following HTTP-methods: PUT, POST and DELETE
 
 ---
 
-#### Delete Post (DELETE):
+#### Delete Post (GET):
 
 `http://localhost:8045/posts/delete?id=<id>`
+
+---
+
+#### Delete All Posts (DELETE):
+
+`http://localhost:8045/posts/deleteall`
 
 ---
 
