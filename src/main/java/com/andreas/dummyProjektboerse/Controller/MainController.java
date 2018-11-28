@@ -1,9 +1,8 @@
 package com.andreas.dummyProjektboerse.Controller;
 
-import javassist.NotFoundException;
+import com.andreas.dummyProjektboerse.Entity.TitleOnly;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.data.rest.webmvc.support.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.andreas.dummyProjektboerse.Repository.PostRepository;
 import com.andreas.dummyProjektboerse.Entity.Posts;
 
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 
 @RestController
@@ -64,9 +62,21 @@ public class MainController {
     }
 
     @GetMapping(path="/posts")
-    public @ResponseBody Iterable<Posts> getAllPosts() {
+    public @ResponseBody List<Posts> getAllPosts() {
         // This returns a JSON or XML with the posts
         return postRepository.findAll();
+    }
+
+    @GetMapping(path="/posts/titles")
+    public @ResponseBody List<TitleOnly> getOnlyTitles() {
+        // This returns a JSON or XML with the titles only
+        List<Posts> before = postRepository.findAll();
+        List<TitleOnly> after = new ArrayList<>();
+
+        for(Posts element : before){
+            after.add(new TitleOnly(element.getTitle()));
+        }
+        return after;
     }
 
     @GetMapping(path="/posts/{id}")

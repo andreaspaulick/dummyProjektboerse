@@ -18,6 +18,12 @@ Supports the following HTTP-methods: PUT, POST and DELETE
 
 ---
 
+#### List the post-titles only (GET):
+
+`http://localhost:8045/posts/titles`
+
+---
+
 #### Add Post (POST):
 
 `http://localhost:8045/posts/add?title=<title>&content=<content>&status=publish`
