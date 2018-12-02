@@ -62,7 +62,7 @@ public class MainController {
     }
 
     @RequestMapping(path="/posts/deleteall", method = RequestMethod.DELETE)
-    public String deleteAllPosts() {
+    public @ResponseBody String deleteAllPosts() {
         // Clears the database
         postRepository.deleteAll();
         return "Database erased";
@@ -86,12 +86,11 @@ public class MainController {
         return after;
     }
 
-    @GetMapping(path="/posts/{id}")
-       public @ResponseBody Optional getByID(@PathVariable int id) {
+    @GetMapping(path = "/posts/id/{id}")
+    public @ResponseBody Optional getByID(@PathVariable int id) {
         if(postRepository.existsById(id))
             return postRepository.findById(id);
         else
             throw new ResourceNotFoundException();
     }
-
 }

@@ -14,7 +14,7 @@ Supports the following HTTP-methods: GET, POST, DELETE
 
 #### List a single post (GET):
 
-`http://localhost:8045/posts/<id>`
+`http://localhost:8045/posts/id/<id>`
 
 ---
 
