@@ -27,10 +27,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="posts : ${posts}">
+                    <tr th:each="posts : ${#lists.sort(posts)}">
                         <td th:text="${posts.id}">1</td>
                         <td th:text="${posts.title}">Title ...</td>
-                        <td th:text="${posts.content}">Text ...</td>
+                        <td th:text="${posts.content}">Content ...</td>
                     </tr>
                 </tbody>
             </table>

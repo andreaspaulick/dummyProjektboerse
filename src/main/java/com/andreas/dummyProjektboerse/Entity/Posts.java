@@ -3,7 +3,7 @@ package com.andreas.dummyProjektboerse.Entity;
 import javax.persistence.*;
 
 @Entity
-public class Posts {
+public class Posts implements Comparable<Posts>{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
@@ -45,5 +45,11 @@ public class Posts {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public int compareTo(Posts posts) {
+        //change sides to order the ID ascending/descending on the HTML page:
+        return posts.getId()-this.getId();
     }
 }
