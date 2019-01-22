@@ -24,8 +24,6 @@ public class HtmlController {
 
     @PostMapping("/")
     public String postsSubmit(@ModelAttribute("addPost") Posts posts) {
-        posts.setTitle(posts.getTitle());
-        posts.setContent(posts.getContent());
         posts.setStatus("publish");
         postRepository.save(posts);
         return "redirect:";
