@@ -1,0 +1,102 @@
+H1 {
+    font-family: arial, sans-serif;
+}
+
+form {
+    font-family: arial, sans-serif;
+}
+
+.pagelayout {
+    margin-left:30px;
+    margin-right:30px;
+}
+
+input {
+    width: 300px;
+}
+
+input:focus {
+    border: 2px solid #23A5EE;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+textarea {
+    display: block;
+    width: 60%;
+    height: 200px;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+
+    font-size: medium;
+    font-family: 'Arial', sans-serif;
+    padding: 0.2em 0.5em;
+    white-space: pre-wrap;
+}
+
+textarea:focus {
+    //box-shadow: 0 0 5px rgb(25, 95, 145);
+    //padding: 3px 0px 3px 3px;
+    //margin: 5px 1px 3px 0px;
+    border: 2px solid #23A5EE;
+}
+
+input[type=submit] {
+    background: #195F91;
+    color: #fff;
+    font-size: 1em;
+    padding: 0.2em 0.5em;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    cursor: hand;
+    cursor: pointer;
+    transition: 150ms box-shadow;
+    width: 120px;
+}
+
+input[type=reset] {
+    background: #195F91;
+    color: #fff;
+    font-size: 1em;
+    padding: 0.2em 0.5em;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    cursor: hand;
+    cursor: pointer;
+    transition: 150ms box-shadow;
+    width: 120px;
+}
+
+button:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+}
+button:active {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset,
+    0px 0px 6px rgba(0, 0, 0, 0.2) inset;
+// box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+#table-scroll {
+    height:400px;
+    overflow:auto;
+    margin-top:20px;
+}
+
+
