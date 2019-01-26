@@ -8,9 +8,13 @@
 <body>
 <div class="pagelayout">
     <h1>Enter Project Post:</h1>
-    <form action="#" th:action="@{/}" th:object="${addPost}" method="post" id="post-form">
-        <p><input type="text" th:field="*{title}" placeholder="Post Title..." maxlength="200"/><br /></p>
-        <p><textarea placeholder="Write Post Content here..." th:field="*{content}" maxlength="2000" ></textarea></p>
+    <form action="#" th:action="@{/}" method="post" id="post-form">
+        <p><input type="text" th:field="*{addPost.title}" placeholder="Post Title..." maxlength="200"/><br /></p>
+        <p><textarea placeholder="Write Post Content here..." th:field="*{addPost.content}" maxlength="2000" ></textarea></p>
+        <div class="checkboxstyle">
+            <input type="checkbox" th:field="*{sendToWp.name}" th:value="false"/>
+            <label th:text="'Also send to WordPress?'"></label>
+        </div>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
     <br />

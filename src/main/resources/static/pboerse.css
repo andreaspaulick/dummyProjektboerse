@@ -9,10 +9,15 @@ form {
 .pagelayout {
     margin-left:30px;
     margin-right:30px;
+    padding-bottom: 30px;
 }
 
-input {
-    width: 300px;
+input[type="text"] {
+    width: 60%;
+}
+
+.checkboxstyle {
+
 }
 
 input:focus {
@@ -41,7 +46,6 @@ textarea {
     height: 200px;
     border: 1px solid #b4b4b4;
     border-radius: 3px;
-
     font-size: medium;
     font-family: 'Arial', sans-serif;
     padding: 0.2em 0.5em;
@@ -98,5 +102,6 @@ button:active {
     overflow:auto;
     margin-top:20px;
 }
+
 
 
