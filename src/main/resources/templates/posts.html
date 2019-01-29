@@ -11,7 +11,7 @@
     <form action="#" th:action="@{/}" method="post" id="post-form">
         <p><input type="text" th:field="*{addPost.title}" placeholder="Post Title..." maxlength="200"/><br /></p>
         <p><textarea placeholder="Write Post Content here..." th:field="*{addPost.content}" maxlength="2000" ></textarea></p>
-        <div class="checkboxstyle">
+        <div>
             <input type="checkbox" th:field="*{sendToWp.name}" th:value="false"/>
             <label th:text="'Also send to WordPress?'"></label>
         </div>
