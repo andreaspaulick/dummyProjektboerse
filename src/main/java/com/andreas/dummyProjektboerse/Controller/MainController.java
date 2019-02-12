@@ -42,6 +42,11 @@ public class MainController {
         n.setTitle(body.get("title"));
         n.setContent(body.get("content"));
         n.setStatus(body.get("status"));
+        n.setCourse(body.get("course"));
+        n.setStart(body.get("start"));
+        n.setEnd(body.get("end"));
+        n.setMax_party(body.get("max_party"));
+        n.setTags(body.get("tags"));
 
         if(n.getContent()==null || n.getStatus()==null|| n.getTitle()==null)
             return new ResponseEntity<>("Error: Missing or invalid JSON Key(s).", null, HttpStatus.BAD_REQUEST);

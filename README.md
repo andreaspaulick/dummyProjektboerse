@@ -50,8 +50,13 @@ Supports the following HTTP-methods: GET, POST, DELETE
 
 ```json
     {
-       "title": "<title>",
-       "content": "<content>",
-       "status": "publish"
+       "title": "{title}",
+       "content": "{content}",
+       "status": "publish",
+       "course": "{course name}",
+       "start": "{project start date}",
+       "end": "{project end date}",
+       "max_party": "{max number participants}",
+       "tags": "{comma separated tags}"
     }
 ```

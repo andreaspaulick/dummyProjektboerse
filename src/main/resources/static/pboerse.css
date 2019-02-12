@@ -16,8 +16,18 @@ input[type="text"] {
     width: 60%;
 }
 
-.checkboxstyle {
+.dropdown {
+    background-color: white;
+    color: #000000;
+    font-size: 1em;
+    padding: 0.2em 0.5em;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
 
+    cursor: hand;
+    cursor: pointer;
+    transition: 150ms box-shadow;
+    width: 120px;
 }
 
 input:focus {
