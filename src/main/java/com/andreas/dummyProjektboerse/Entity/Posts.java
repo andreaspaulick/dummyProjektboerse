@@ -15,11 +15,12 @@ public class Posts implements Comparable<Posts>{
     private String end;
     private String max_party;
     private String tags;
+    private String user_login;
 
     public Posts() {
     }
 
-    public Posts(String title, String content, String status, String course, String start, String end, String max_party, String tags) {
+    public Posts(String title, String content, String status, String course, String start, String end, String max_party, String tags, String user_login) {
         this.title = title;
         this.content = content;
         this.status = status;
@@ -28,6 +29,7 @@ public class Posts implements Comparable<Posts>{
         this.end = end;
         this.max_party = max_party;
         this.tags = tags;
+        this.user_login = user_login;
     }
 
     public String getCourse() {
@@ -98,6 +100,14 @@ public class Posts implements Comparable<Posts>{
     public void setStatus(String status) {
 
         this.status = status;
+    }
+
+    public String getUser_login() {
+        return user_login;
+    }
+
+    public void setUser_login(String user_login) {
+        this.user_login = user_login;
     }
 
     public int getId() {

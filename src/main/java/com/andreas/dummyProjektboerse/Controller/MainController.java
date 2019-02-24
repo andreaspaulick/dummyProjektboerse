@@ -47,6 +47,7 @@ public class MainController {
         n.setEnd(body.get("end"));
         n.setMax_party(body.get("max_party"));
         n.setTags(body.get("tags"));
+        n.setUser_login(body.get("user_login"));
 
         if(n.getContent()==null || n.getStatus()==null|| n.getTitle()==null)
             return new ResponseEntity<>("Error: Missing or invalid JSON Key(s).", null, HttpStatus.BAD_REQUEST);

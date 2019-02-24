@@ -4,47 +4,73 @@
     <title>Dummy Projektbörse THK</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../static/pboerse.css" th:href="@{/pboerse.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="pagelayout">
-    <h1>Enter Project Post:</h1>
-    <form action="#" th:action="@{/}" method="post" id="post-form">
-        <p><input type="text" th:field="*{addPost.title}" placeholder="Post Title..." maxlength="200"/><br /></p>
-        <p><textarea placeholder="Write Post Content here..." th:field="*{addPost.content}" maxlength="2000" ></textarea></p>
-        <!--<p><input type="text" th:field="*{addPost.course}" placeholder="Course" maxlength="50"/><br /></p>-->
-        <p> <label th:for="addPost.course" th:text="'Studiengang:'"></label>
-            <select th:field="*{addPost.course}" class="dropdown">
-            <option th:value="all" th:text="'- Alle -'"></option>
-            <option th:value="inf" th:text="'Informatikstudierende'"></option>
-            <option th:value="ing" th:text="'Ingenieurswissenschaften'"></option>
-            <option th:value="ai" th:text="'Informatik (Bachelor/Master)'"></option>
-            <option th:value="ti" th:text="'Technische Informatik (Bachelor/Master)'"></option>
-            <option th:value="wi" th:text="'Wirtschaftsinformatik (Bachelor/Master)'"></option>
-        </select></p>
-        <p>
-            <label th:for="addPost.start" th:text="'Startdatum:'"></label>
-            <input type="date" th:field="*{addPost.start}" maxlength="50"/>
-        </p>
-        <p>
-            <label th:for="addPost.end" th:text="'Enddatum:'"></label>
-            <input type="date" th:field="*{addPost.end}" maxlength="50"/>
-        </p>
-        <p>
-            <label th:for="addPost.max_party" th:text="'Max. Teilnehmerzahl:'"></label>
-            <input type="number" th:field="*{addPost.max_party}" min="1" max="999"/>
-        </p>
-        <p>
-            <label th:for="addPost.tags" th:text="'Tags:'"></label>
-            <input type="text" th:field="*{addPost.tags}" placeholder="(tag1, tag2, ...)" maxlength="999"/>
-        </p>
-        <div>
-            <input type="checkbox" th:field="*{sendToWp.name}" th:value="false"/>
-            <label th:text="'Also send to WordPress?'"></label>
-        </div>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
+    <div class="">
+        <h1>Enter Project Post:</h1>
+        <form action="#" th:action="@{/}" method="post" id="post-form">
+            <p><input type="text" th:field="*{addPost.title}" placeholder="Post Title..." maxlength="200"/><br /></p>
+            <p><textarea placeholder="Write Post Content here..." th:field="*{addPost.content}" maxlength="2000" ></textarea></p>
+            <!--<p> <label th:for="addPost.course" th:text="'Studiengang:'"></label>-->
+                <!--<select th:field="*{addPost.course}" class="dropdown">-->
+                    <!--<option th:value="''" th:text="'Bitte wählen...'"></option>-->
+                    <!--<option th:value="all" th:text="'- Alle -'"></option>-->
+                    <!--<option th:value="inf" th:text="'Informatikstudierende'"></option>-->
+                    <!--<option th:value="ing" th:text="'Ingenieurswissenschaften'"></option>-->
+                    <!--<option th:value="ai" th:text="'Informatik (Bachelor/Master)'"></option>-->
+                    <!--<option th:value="ti" th:text="'Technische Informatik (Bachelor/Master)'"></option>-->
+                    <!--<option th:value="wi" th:text="'Wirtschaftsinformatik (Bachelor/Master)'"></option>-->
+            <!--</select></p>-->
+            <label for="pb_wporg_course">Studiengang</label>
+            <select id="pb_wporg_course" name="pb_wporg_course[]" th:field="*{addPost.course}" multiple="multiple" size="6">
+            </select>
+            <script>
+                let multibox = $('#pb_wporg_course');
+
+                multibox.empty();
+                //multibox.append('<option selected="selected" disabled>Wähle Studiengang</option>');
+                multibox.prop('selectedIndex', 0);
+
+                //const url = 'https://api.myjson.com/bins/7xq2x';
+                const url = 'https://gptest.archi-lab.io/studyCourses';
+
+                // Populate dropdown with list of provinces
+                $.getJSON(url, function (data) {
+                    $.each(data._embedded, function (i, object) {
+                        $.each(object, function(key, entry) {
+                            //multibox.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+                            multibox.append($('<option></option>').attr('value', entry._links.self.href).text(entry.name+" "+"("+entry.academicDegree+")"));
+                        })
+                    })
+                });
+            </script>
+            <p>
+                <label th:for="addPost.start" th:text="'Startdatum:'"></label>
+                <input type="date" th:field="*{addPost.start}" maxlength="50"/>
+            </p>
+            <p>
+                <label th:for="addPost.end" th:text="'Enddatum:'"></label>
+                <input type="date" th:field="*{addPost.end}" maxlength="50"/>
+            </p>
+            <p>
+                <label th:for="addPost.max_party" th:text="'Max. Teilnehmerzahl:'"></label>
+                <input type="number" th:field="*{addPost.max_party}" min="1" max="999" th:placeholder="'1 - 999'"/>
+            </p>
+            <p>
+                <label th:for="addPost.tags" th:text="'Tags:'"></label>
+                <input type="text" th:field="*{addPost.tags}" placeholder="(tag1, tag2, ...)" maxlength="999"/>
+            </p>
+            <div>
+                <input type="checkbox" th:field="*{sendToWp.name}" th:value="false"/>
+                <label th:text="'Also send to WordPress?'"></label>
+            </div>
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
+    </div>
     <br />
-    <br />
+    <hr>
     <br />
     <h1>Project-Database:</h1>
         <div id="table-scroll">
@@ -59,6 +85,7 @@
                         <th>End</th>
                         <th>Max. Part.</th>
                         <th>Tags</th>
+                        <th>User</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,6 +98,7 @@
                         <td th:text="${posts.end}">End ...</td>
                         <td th:text="${posts.max_party}">Participants ...</td>
                         <td th:text="${posts.tags}">Tags ...</td>
+                        <td th:text="${posts.user_login}">Tags ...</td>
                     </tr>
                 </tbody>
             </table>

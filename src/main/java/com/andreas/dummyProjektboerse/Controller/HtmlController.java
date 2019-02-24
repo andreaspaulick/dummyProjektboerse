@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
@@ -25,6 +26,10 @@ public class HtmlController {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private HttpServletRequest request;
+
 
     @GetMapping("/")
     public String postsForm(Model model) {
@@ -56,6 +61,11 @@ public class HtmlController {
         else {
             System.out.println("Send this data to WordPress: NO");
         }
+
+//        KeycloakAuthenticationToken principal = (KeycloakAuthenticationToken) request.getUserPrincipal();
+//        String userId = principal.getName();
+//        System.out.println("username: "+ userId);
+        //posts.setUser_login("request.getUserPrincipal()");
 
         posts.setStatus("publish");
         postRepository.save(posts);
